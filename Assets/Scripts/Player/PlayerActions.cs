@@ -2,34 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(InputManager))]
 public class PlayerActions : MonoBehaviour
 {
-    InputManager _im;
+    PlayerBase _player;
     
-    void OnValidate()
+    void Awake()
     {
-        _im = GetComponent<InputManager>();
-    }
-    
-    void OnEnable()
-    {
-        _im.OnInteract += Interact;
-        _im.OnAttack += Attack;
+        _player = GetComponent<PlayerBase>();
     }
 
-    void OnDisable()
-    {
-        _im.OnInteract -= Interact;
-        _im.OnAttack -= Attack;
-    }
-
-    void Interact()
+    public void Interact()
     {
         Debug.Log("Interact Pressed");
     }
 
-    void Attack()
+    public void Attack()
     {
         Debug.Log("Attack Pressed");
     }
