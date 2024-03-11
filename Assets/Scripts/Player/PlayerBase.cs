@@ -3,13 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using StarterAssets;
 
-public enum PlayerThreatState
-{
-    Killer,
-    Scary,
-    None
-}
-
 [RequireComponent(typeof(InputManager))]
 [RequireComponent(typeof(PlayerActions))]
 [RequireComponent(typeof(PlayerInfo))]
@@ -19,8 +12,6 @@ public class PlayerBase : MonoBehaviour
     [SerializeField] float _scareTime = 15f;
 
     float _threatTimer = 0f;
-    
-    public PlayerThreatState ThreatLevel { get; private set; } = PlayerThreatState.Scary;
     
     // Components
     InputManager _im;
@@ -56,9 +47,9 @@ public class PlayerBase : MonoBehaviour
     void Update()
     {
         _threatTimer += Time.deltaTime;
-        if (_threatTimer >= _scareTime && ThreatLevel != PlayerThreatState.Killer)
+        if (_threatTimer >= _scareTime && _info.ThreatLevel != PlayerThreatState.Killer)
         {
-            ThreatLevel = PlayerThreatState.None;
+            _info.SetThreatState(PlayerThreatState.None);
         }
     }
 
@@ -71,7 +62,7 @@ public class PlayerBase : MonoBehaviour
     {
         if(_actions.Attack())
         {
-            ThreatLevel = PlayerThreatState.Killer;
+            _info.SetThreatState(PlayerThreatState.Killer);
         }
     }
 }

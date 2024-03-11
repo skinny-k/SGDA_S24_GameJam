@@ -48,7 +48,7 @@ public class NPCBase : MonoBehaviour
     {
         if (_playerInView != null)
         {
-            switch (_playerInView.ThreatLevel)
+            switch (_playerInView.Info.ThreatLevel)
             {
                 case PlayerThreatState.Killer:
                     _movement.RunAwayFrom(_playerInView.gameObject, _maxLookDistance);
