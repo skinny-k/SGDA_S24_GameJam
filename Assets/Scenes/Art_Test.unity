@@ -197,15 +197,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7787265314837674351, guid: d847f20b6a2b6b448bd5d2d7b37b0b9e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.584
+      value: 0.855
       objectReference: {fileID: 0}
     - target: {fileID: 7787265314837674351, guid: d847f20b6a2b6b448bd5d2d7b37b0b9e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5983
+      value: 0.89
       objectReference: {fileID: 0}
     - target: {fileID: 7787265314837674351, guid: d847f20b6a2b6b448bd5d2d7b37b0b9e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.773
+      value: 1.613
       objectReference: {fileID: 0}
     - target: {fileID: 7787265314837674351, guid: d847f20b6a2b6b448bd5d2d7b37b0b9e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -655,7 +655,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4591816414918635867, guid: 53e9cc0642b670f499534b1d6a179834, type: 3}
       propertyPath: m_Name
-      value: Metal_Picket (1)
+      value: Metal_Picket
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53e9cc0642b670f499534b1d6a179834, type: 3}
