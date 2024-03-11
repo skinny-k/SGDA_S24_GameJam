@@ -164,3 +164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8108cc311cc3448eb5c5f871845cb9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _xNoise: 25
+  _yNoise: 25
+  _gravity: 10
+  _initialVelocity: {x: 0, y: 2.5, z: 0}
+  _velocityXNoise: 2.5
+  _velocityYNoise: 0
