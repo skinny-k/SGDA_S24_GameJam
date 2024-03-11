@@ -16,6 +16,10 @@ public enum PlayerThreatState
 [RequireComponent(typeof(ThirdPersonController))]
 public class PlayerBase : MonoBehaviour
 {
+    [SerializeField] float _scareTime = 15f;
+
+    float _threatTimer = 0f;
+    
     public PlayerThreatState ThreatLevel { get; private set; } = PlayerThreatState.Scary;
     
     // Components
@@ -47,6 +51,15 @@ public class PlayerBase : MonoBehaviour
     {
         _im.OnInteract -= Interact;
         _im.OnAttack -= Attack;
+    }
+
+    void Update()
+    {
+        _threatTimer += Time.deltaTime;
+        if (_threatTimer >= _scareTime && ThreatLevel != PlayerThreatState.Killer)
+        {
+            ThreatLevel = PlayerThreatState.None;
+        }
     }
 
     void Interact()
