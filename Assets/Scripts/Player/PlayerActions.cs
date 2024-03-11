@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 public class PlayerActions : MonoBehaviour
 {
     PlayerBase _player;
+
+    public event Action OnInteract;
     
     void Awake()
     {
@@ -13,7 +16,7 @@ public class PlayerActions : MonoBehaviour
 
     public void Interact()
     {
-        Debug.Log("Interact Pressed");
+        OnInteract?.Invoke();
     }
 
     public bool Attack()

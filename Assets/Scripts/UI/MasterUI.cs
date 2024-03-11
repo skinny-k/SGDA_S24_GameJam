@@ -8,7 +8,8 @@ public class MasterUI : MonoBehaviour
 {
     public static MasterUI Instance;
 
-    [SerializeField] TMPFadeOut _damageCallout;
+    [SerializeField] WorldAnchoredUIWithOffset _damageCallout;
+    [SerializeField] Tooltip _interactTooltip;
     
     void Awake()
     {
@@ -22,12 +23,20 @@ public class MasterUI : MonoBehaviour
         }
     }
 
-    public TMPFadeOut DamageCallout(Vector3 position, string msg)
+    public WorldAnchoredUIWithOffset DamageCallout(Vector3 position, string msg)
     {
-        TMPFadeOut callout = Instantiate(_damageCallout, transform);
+        WorldAnchoredUIWithOffset callout = Instantiate(_damageCallout, transform);
         callout.GetComponent<TMP_Text>().text = msg;
-        callout.GetComponent<WorldAnchoredUI>().SetWorldAnchor(position);
+        callout.SetWorldAnchor(position);
 
         return callout;
+    }
+
+    public Tooltip InteractTooltip(Vector3 position)
+    {
+        Tooltip tip = Instantiate(_interactTooltip, transform);
+        tip.SetWorldAnchor(position);
+
+        return tip;
     }
 }
