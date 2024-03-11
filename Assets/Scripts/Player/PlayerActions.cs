@@ -13,7 +13,19 @@ public class PlayerActions : MonoBehaviour
 
     public void Interact()
     {
-        Debug.Log("Interact Pressed");
+        RaycastHit[] hits = Physics.BoxCastAll(transform.position + Vector3.up, new Vector3(1f, 0.25f, 0.5f), transform.forward);
+
+        foreach (RaycastHit hit in hits)
+        {
+            if (hit.collider.gameObject.GetComponent<Dialogue>() != null)
+            {
+                hit.collider.gameObject.GetComponent<Dialogue>().DisplayDialogue();
+            }
+            else if (hit.collider.gameObject.GetComponent<InteractableObject>() != null)
+            {
+                hit.collider.gameObject.GetComponent<InteractableObject>().Interact();
+            }
+        }
     }
 
     public bool Attack()
