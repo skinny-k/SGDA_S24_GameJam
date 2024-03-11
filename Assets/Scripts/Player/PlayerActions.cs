@@ -2,35 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(InputManager))]
 public class PlayerActions : MonoBehaviour
 {
-    InputManager _im;
+    PlayerBase _player;
     
-    void OnValidate()
+    void Awake()
     {
-        _im = GetComponent<InputManager>();
-    }
-    
-    void OnEnable()
-    {
-        _im.OnInteract += Interact;
-        _im.OnAttack += Attack;
+        _player = GetComponent<PlayerBase>();
     }
 
-    void OnDisable()
-    {
-        _im.OnInteract -= Interact;
-        _im.OnAttack -= Attack;
-    }
-
-    void Interact()
+    public void Interact()
     {
         Debug.Log("Interact Pressed");
     }
 
-    void Attack()
+    public bool Attack()
     {
-        Debug.Log("Attack Pressed");
+        bool result = false;
+        
+        RaycastHit[] hits = Physics.BoxCastAll(transform.position + Vector3.up, new Vector3(1f, 0.25f, 0.5f), transform.forward);
+
+        foreach (RaycastHit hit in hits)
+        {
+            if (hit.collider.gameObject.GetComponent<IDamageable>() != null)
+            {
+                hit.collider.gameObject.GetComponent<IDamageable>().TakeDamage();
+                if (hit.collider.gameObject.GetComponent<NPCBase>() != null)
+                {
+                    result = true;
+                }
+            }
+        }
+
+        return result;
     }
 }
