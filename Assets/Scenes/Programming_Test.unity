@@ -544,6 +544,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 448893919119872268, guid: 37483ed20ff1a4fec98a189f0c859499, type: 3}
+      propertyPath: _attackBounds.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 448893919119872268, guid: 37483ed20ff1a4fec98a189f0c859499, type: 3}
+      propertyPath: _attackBounds.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 448893919119872268, guid: 37483ed20ff1a4fec98a189f0c859499, type: 3}
+      propertyPath: _attackBounds.z
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8997211105665263575, guid: 37483ed20ff1a4fec98a189f0c859499, type: 3}
       propertyPath: m_Name
       value: Player
