@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5525603422150458376}
   - component: {fileID: 5525603422150458379}
   - component: {fileID: 5525603422150458377}
-  - component: {fileID: 8374223918404046009}
+  - component: {fileID: -7560818975015222774}
   m_Layer: 5
   m_Name: Damage Callout
   m_TagString: Untagged
@@ -152,7 +152,7 @@ MonoBehaviour:
   _fadeOnStart: 1
   _destroyOnFade: 1
   _fadeTime: 1
---- !u!114 &8374223918404046009
+--- !u!114 &-7560818975015222774
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5525603422150458373}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8108cc311cc3448eb5c5f871845cb9a, type: 3}
+  m_Script: {fileID: 11500000, guid: e83462f8973464da7946e34e9c4cc7fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _xNoise: 25
@@ -169,4 +169,4 @@ MonoBehaviour:
   _gravity: 10
   _initialVelocity: {x: 0, y: 2.5, z: 0}
   _velocityXNoise: 2.5
-  _velocityYNoise: 0
+  _velocityYNoise: 2.5
