@@ -44,16 +44,17 @@ public class NPCBase : MonoBehaviour
         }
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if (_playerInView != null)
         {
             switch (_playerInView.ThreatLevel)
             {
                 case PlayerThreatState.Killer:
-                    // break;
-                case PlayerThreatState.Scary:
                     _movement.RunAwayFrom(_playerInView.gameObject, _maxLookDistance);
+                    break;
+                case PlayerThreatState.Scary:
+                    // _movement.RunAwayFrom(_playerInView.gameObject, _maxLookDistance);
                     break;
                 case PlayerThreatState.None:
                     break;

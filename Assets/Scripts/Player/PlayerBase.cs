@@ -12,6 +12,7 @@ public enum PlayerThreatState
 
 [RequireComponent(typeof(InputManager))]
 [RequireComponent(typeof(PlayerActions))]
+[RequireComponent(typeof(PlayerInfo))]
 [RequireComponent(typeof(ThirdPersonController))]
 public class PlayerBase : MonoBehaviour
 {
@@ -20,16 +21,19 @@ public class PlayerBase : MonoBehaviour
     // Components
     InputManager _im;
     PlayerActions _actions;
+    PlayerInfo _info;
     ThirdPersonController _controller;
 
     public InputManager Input => _im;
     public PlayerActions Actions => _actions;
+    public PlayerInfo Info => _info;
     public ThirdPersonController CharacterController => _controller;
     
     void Awake()
     {
         _im = GetComponent<InputManager>();
         _actions = GetComponent<PlayerActions>();
+        _info = GetComponent<PlayerInfo>();
         _controller = GetComponent<ThirdPersonController>();
     }
 
@@ -52,13 +56,9 @@ public class PlayerBase : MonoBehaviour
 
     void Attack()
     {
-        _actions.Attack();
-
-        /*
-        if (hit npc)
+        if(_actions.Attack())
         {
             ThreatLevel = PlayerThreatState.Killer;
         }
-        */
     }
 }

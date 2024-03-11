@@ -16,8 +16,24 @@ public class PlayerActions : MonoBehaviour
         Debug.Log("Interact Pressed");
     }
 
-    public void Attack()
+    public bool Attack()
     {
-        Debug.Log("Attack Pressed");
+        bool result = false;
+        
+        RaycastHit[] hits = Physics.BoxCastAll(transform.position + Vector3.up, new Vector3(1f, 0.25f, 0.5f), transform.forward);
+
+        foreach (RaycastHit hit in hits)
+        {
+            if (hit.collider.gameObject.GetComponent<IDamageable>() != null)
+            {
+                hit.collider.gameObject.GetComponent<IDamageable>().TakeDamage();
+                if (hit.collider.gameObject.GetComponent<NPCBase>() != null)
+                {
+                    result = true;
+                }
+            }
+        }
+
+        return result;
     }
 }

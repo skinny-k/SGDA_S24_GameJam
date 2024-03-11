@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class NPCHealth : MonoBehaviour, IDamageable
 {
-    public void TakeDamage(int amount)
+    [SerializeField] string _damageCalloutMessage = "-99999";
+    
+    public void TakeDamage()
     {
-        //
+        // do whatever needs to happen on death
+        Destroy(gameObject);
+
+        MasterUI.Instance.DamageCallout(transform.position, _damageCalloutMessage);
     }
 }
