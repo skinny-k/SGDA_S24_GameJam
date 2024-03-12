@@ -32,5 +32,10 @@ public class InputManager : MonoBehaviour
         {
             OnAttack?.Invoke();
         }
+
+        if (_input.actions["Pause"].triggered)
+        {
+            MasterUI.Instance.TogglePause();
+        }
     }
 }
