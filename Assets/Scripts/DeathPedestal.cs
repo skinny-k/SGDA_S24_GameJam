@@ -6,6 +6,6 @@ public class DeathPedestal : InteractObject
 {
     public override void Interact()
     {
-        // end game
+        GameManager.LoadScene("GameOver");
     }
 }
