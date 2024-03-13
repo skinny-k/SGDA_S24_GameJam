@@ -11,7 +11,7 @@ public class GuardMovement : NPCMovement
 
     [Header("Attack Settings")]
     [Tooltip("The distance at which the guard can attack the player.")]
-    [SerializeField] float _attackDistance = 4f;
+    [SerializeField] float _attackDistance = 2f;
     [Tooltip("The time in seconds the guard should wait between attacks.")]
     [SerializeField] float _attackInterval = 2f;
     [SerializeField] string _damageCalloutMessage = "0";
@@ -22,6 +22,8 @@ public class GuardMovement : NPCMovement
     [SerializeField] float _repathInterval = 1f;
 
     Vector3 _weaponDefaultRotation;
+    Vector3 _weaponTargetPosition;
+    Vector3 _weaponDefaultPosition;
     float _repathTimer = 0f;
     float _attackTimer = 0f;
 
@@ -30,25 +32,41 @@ public class GuardMovement : NPCMovement
         if (_weapon != null)
         {
             _weaponDefaultRotation = _weapon.localRotation.eulerAngles;
+            _weaponDefaultPosition = _weapon.localPosition;
+            _weaponTargetPosition = _weaponDefaultPosition;
         }
     }
 
     void Update()
     {
         _attackTimer -= Time.deltaTime;
+        _weapon.localPosition = Vector3.MoveTowards(_weapon.localPosition, _weaponTargetPosition, _attackDistance * 2 * Time.deltaTime);
     }
 
     public override void RespondToKiller(PlayerBase killer)
     {
         _repathTimer -= Time.deltaTime;
         
-        if (_repathTimer <= 0)
+        if (Vector3.Distance(transform.position, killer.transform.position) > _attackDistance)
         {
-            _dest = killer.transform.position;
+            if (_repathTimer <= 0)
+            {
+                _dest = killer.transform.position;
 
-            _agent.ResetPath();
-            _agent.SetDestination(_dest);
+                _agent.ResetPath();
+                _agent.SetDestination(_dest);
+
+                _repathTimer = _repathInterval;
+            }
         }
+        else
+        {
+            _agent.ResetPath();
+        }
+
+        Vector3 lookDir = killer.transform.position - transform.position;
+        lookDir.y = 0;
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(lookDir, Vector3.up), 360f * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, killer.transform.position) <= _attackDistance)
         {
@@ -58,13 +76,11 @@ public class GuardMovement : NPCMovement
 
     public override void RespondToScary(PlayerBase scary)
     {
+        base.RespondToScary(scary);
+        
         if (Vector3.Distance(transform.position, scary.transform.position) <= _attackDistance)
         {
             TryAttack(scary);
-        }
-        else
-        {
-            base.RespondToScary(scary);
         }
 
         _weapon.localRotation = Quaternion.Euler(_weaponAttackRotation);
@@ -83,8 +99,19 @@ public class GuardMovement : NPCMovement
         {
             if (_attackTimer <= 0)
             {
+                StartCoroutine(AttackAnim());
+                MasterUI.Instance.DamageCallout(player.transform.position + new Vector3(0, _calloutOffsetY, 0), _damageCalloutMessage);
                 _attackTimer = _attackInterval;
             }
         }
+    }
+
+    IEnumerator AttackAnim()
+    {
+        _weaponTargetPosition = _weaponDefaultPosition + new Vector3(0, 0, _attackDistance);
+
+        yield return new WaitForSeconds(0.25f);
+
+        _weaponTargetPosition = _weaponDefaultPosition;
     }
 }
