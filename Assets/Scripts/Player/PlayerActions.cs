@@ -26,10 +26,6 @@ public class PlayerActions : MonoBehaviour
             {
                 hit.collider.gameObject.GetComponent<Dialogue>().DisplayDialogue();
             }
-            else if (hit.collider.gameObject.GetComponent<InteractableObject>() != null)
-            {
-                hit.collider.gameObject.GetComponent<InteractableObject>().Interact();
-            }
         }
 
         OnInteract?.Invoke();
