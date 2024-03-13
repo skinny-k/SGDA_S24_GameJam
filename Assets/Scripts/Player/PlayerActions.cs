@@ -9,8 +9,6 @@ public class PlayerActions : MonoBehaviour
     
     PlayerBase _player;
 
-    [HideInInspector]
-    public bool Interacting;
     public event Action OnInteract;
     
     void Awake()
@@ -27,10 +25,6 @@ public class PlayerActions : MonoBehaviour
             if (hit.collider.gameObject.GetComponent<Dialogue>() != null)
             {
                 hit.collider.gameObject.GetComponent<Dialogue>().DisplayDialogue();
-            }
-            else if (hit.collider.gameObject.GetComponent<InteractableObject>() != null && !Interacting)
-            {
-                hit.collider.gameObject.GetComponent<InteractableObject>().Interact(this);
             }
         }
 

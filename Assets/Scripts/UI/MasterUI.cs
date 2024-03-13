@@ -8,7 +8,8 @@ public class MasterUI : MonoBehaviour
 {
     [SerializeField] Button _pauseButton;
     [SerializeField] GameObject _pausePanel;
-    
+    [SerializeField] TextMeshProUGUI _playerTitle;
+
     [Header("Prefabs")]
     [SerializeField] WorldAnchoredUIWithOffset _damageCallout;
     [SerializeField] Tooltip _interactTooltip;
@@ -55,6 +56,11 @@ public class MasterUI : MonoBehaviour
     public void TogglePause()
     {
         SetPause(!_pausePanel.activeSelf);
+    }
+
+    public void UpdateTitle(string titleAddition)
+    {
+        _playerTitle.text += titleAddition;
     }
 
     public void LoadScene(string sceneName)
