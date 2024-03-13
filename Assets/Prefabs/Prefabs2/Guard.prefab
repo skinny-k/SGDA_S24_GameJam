@@ -74,7 +74,7 @@ GameObject:
   m_Component:
   - component: {fileID: 243651197610285430}
   m_Layer: 0
-  m_Name: Guardsmen
+  m_Name: Guard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

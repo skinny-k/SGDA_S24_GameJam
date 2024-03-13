@@ -236,7 +236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1181858722957363349}
   m_Layer: 0
-  m_Name: Death_Knight
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
