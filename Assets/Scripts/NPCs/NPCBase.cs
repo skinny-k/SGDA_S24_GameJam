@@ -6,9 +6,13 @@ using UnityEngine;
 [RequireComponent(typeof(NPCMovement))]
 public class NPCBase : MonoBehaviour
 {
+    [Tooltip("The distance within which the NPC can perceive the player")]
     [SerializeField] float _maxLookDistance = 10f;
+    [Tooltip("The distance within which the NPC should always face the player")]
+    [SerializeField] float _focusDistance = 3f;
 
     PlayerBase _playerInView = null;
+    bool _scared = true;
 
     // Components
     NPCMovement _movement;
@@ -16,6 +20,8 @@ public class NPCBase : MonoBehaviour
 
     public NPCMovement Movement => _movement;
     public NPCHealth Health => _health;
+    public float MaxLookDistance => _maxLookDistance;
+    public float FocusDistance => _focusDistance;
     
     void OnValidate()
     {
@@ -51,14 +57,24 @@ public class NPCBase : MonoBehaviour
             switch (_playerInView.Info.ThreatLevel)
             {
                 case PlayerThreatState.Killer:
-                    _movement.RunAwayFrom(_playerInView.gameObject, _maxLookDistance);
+                    _movement.RespondToKiller(_playerInView);
                     break;
                 case PlayerThreatState.Scary:
-                    // _movement.RunAwayFrom(_playerInView.gameObject, _maxLookDistance);
+                    _movement.RespondToScary(_playerInView);
                     break;
                 case PlayerThreatState.None:
+                    if (_scared)
+                    {
+                        _scared = false;
+                        _movement.ClearScared();
+                    }
+                    _movement.RespondToPassive(_playerInView);
                     break;
             }
+        }
+        else
+        {
+            _movement.RespondToPassive();
         }
     }
 }

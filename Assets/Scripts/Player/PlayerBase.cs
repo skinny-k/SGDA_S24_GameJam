@@ -10,6 +10,7 @@ using StarterAssets;
 public class PlayerBase : MonoBehaviour
 {
     [SerializeField] float _scareTime = 15f;
+    [SerializeField] string _playerTitle = "Death Knight";
 
     float _threatTimer = 0f;
     
@@ -30,6 +31,11 @@ public class PlayerBase : MonoBehaviour
         _actions = GetComponent<PlayerActions>();
         _info = GetComponent<PlayerInfo>();
         _controller = GetComponent<ThirdPersonController>();
+    }
+
+    private void Start()
+    {
+        MasterUI.Instance.UpdateTitle(_playerTitle);
     }
 
     void OnEnable()

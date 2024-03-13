@@ -18,17 +18,13 @@ public class PlayerActions : MonoBehaviour
 
     public void Interact()
     {
-        RaycastHit[] hits = Physics.BoxCastAll(transform.position + Vector3.up, new Vector3(1f, 0.25f, 0.5f), transform.forward);
+        RaycastHit[] hits = Physics.BoxCastAll(transform.TransformPoint(Vector3.up), new Vector3(1f, 0.25f, 0.5f), transform.forward, Quaternion.identity, 0);
 
         foreach (RaycastHit hit in hits)
         {
             if (hit.collider.gameObject.GetComponent<Dialogue>() != null)
             {
                 hit.collider.gameObject.GetComponent<Dialogue>().DisplayDialogue();
-            }
-            else if (hit.collider.gameObject.GetComponent<InteractableObject>() != null)
-            {
-                hit.collider.gameObject.GetComponent<InteractableObject>().Interact();
             }
         }
 
@@ -39,7 +35,7 @@ public class PlayerActions : MonoBehaviour
     {
         bool result = false;
         
-        RaycastHit[] hits = Physics.BoxCastAll(transform.position + new Vector3(0, 0.5f, _attackBounds.z), _attackBounds, transform.forward, Quaternion.identity, 0);
+        RaycastHit[] hits = Physics.BoxCastAll(transform.TransformPoint(new Vector3(0, 0.5f, _attackBounds.z)), _attackBounds, transform.forward, Quaternion.identity, 0);
 
         foreach (RaycastHit hit in hits)
         {
