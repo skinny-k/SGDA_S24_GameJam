@@ -5,8 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public abstract class InteractObject : MonoBehaviour, IInteractable
 {
-    PlayerBase _playerInRange = null;
-    Tooltip _tip = null;
+    [SerializeField] protected Vector3 _tooltipOffset = Vector3.zero;
+    
+    protected PlayerBase _playerInRange = null;
+    protected Tooltip _tip = null;
     
     public abstract void Interact();
 
@@ -14,7 +16,7 @@ public abstract class InteractObject : MonoBehaviour, IInteractable
     {
         if (other.GetComponent<PlayerBase>() != null)
         {
-            _tip = MasterUI.Instance.InteractTooltip(transform.position);
+            _tip = MasterUI.Instance.InteractTooltip(transform.TransformPoint(_tooltipOffset));
             _playerInRange = other.GetComponent<PlayerBase>();
             _playerInRange.Actions.OnInteract += Interact;
         }

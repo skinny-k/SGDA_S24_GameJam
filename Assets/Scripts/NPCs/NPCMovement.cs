@@ -7,31 +7,31 @@ using UnityEngine.AI;
 public class NPCMovement : MonoBehaviour
 {
     [Header("Wander Settings")]
-    [SerializeField] bool _wanders = false;
+    [SerializeField] protected bool _wanders = false;
     [Tooltip("How often the NPC should try to wander")]
-    [SerializeField] float _wanderInterval = 4f;
+    [SerializeField] protected float _wanderInterval = 4f;
     [Tooltip("The likelihood that the NPC decides to move on any Wander Interval")]
-    [SerializeField] float _wanderChance = 0.5f;
+    [SerializeField] protected float _wanderChance = 0.5f;
     [Tooltip("The central point the NPC should wander around near")]
-    [SerializeField] Vector3 _wanderCenter;
+    [SerializeField] protected Vector3 _wanderCenter;
     [Tooltip("The distance from Wander Center the NPC can wander")]
-    [SerializeField] float _wanderDistance = 2f;
+    [SerializeField] protected float _wanderDistance = 2f;
 
     [Header("Tremble Settings")]
     [Tooltip("The speed of the tremble")]
-    [SerializeField] float _trembleInterval = 0.1f;
+    [SerializeField] protected float _trembleInterval = 0.1f;
     [Tooltip("The intensity of the tremble")]
-    [SerializeField] float _trembleMagnitude = 5f;
+    [SerializeField] protected float _trembleMagnitude = 5f;
     
     [Header("Flee Settings")]
     [Tooltip("The angle it is possible for the NPC to flee from the player at. A value of 0 will force the NPC to run directly away from the player, while a value of 180 will allow the NPC to flee in any direction.")]
-    [SerializeField] float _fleeAngle = 60f;
+    [SerializeField] protected float _fleeAngle = 60f;
     [Tooltip("The amount of extra distance the NPC should flee past its Max Look Distance.")]
-    [SerializeField] float _fleeBuffer = 7.5f;
+    [SerializeField] protected float _fleeBuffer = 7.5f;
     [Tooltip("The maximum amount of additional distance the NPC should flee (a random amount of extra distance is added on top of the minimum of Max Look Distance + Flee Buffer)")]
-    [SerializeField] float _maxAdditionalFlee = 5f;
+    [SerializeField] protected float _maxAdditionalFlee = 5f;
     [Tooltip("Forces the NPC to find a new spot to flee to if the player is within this distance of its current destination")]
-    [SerializeField] float _fleeRepathDistance = 5f;
+    [SerializeField] protected float _fleeRepathDistance = 5f;
 
     protected Vector3 _dest;
     

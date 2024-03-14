@@ -6,8 +6,7 @@ using UnityEngine;
 public enum Quest
 {
     None,
-    TestQuest1,
-    TestQuest2
+    WrangleCows
 }
 
 // Represents the actual status of the quest. Do not edit this enum without approval and oversight from a programmer
