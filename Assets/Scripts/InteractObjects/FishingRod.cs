@@ -7,13 +7,13 @@ public class FishingRod : InteractObject
 {
     [SerializeField] string _catchCalloutMessage = "Got a Bite!";
     [SerializeField] string _failCalloutMessage = "Lost it...";
+    [SerializeField] Color _calloutColor = Color.black;
     [SerializeField] float _calloutOffsetY = 2f;
 
     //private StarterAssets.StarterAssetsInputs inputs;
     private PlayerInput playerInput;
     private bool _catchable = false;
     private bool _fishing = false;
-    private bool _title = false;
     private IEnumerator wait;
     private void Awake()
     {
@@ -35,7 +35,7 @@ public class FishingRod : InteractObject
         else if(!_fishing)
         {
             //Replace with animation
-            MasterUI.Instance.DamageCallout(transform.position + new Vector3(0, _calloutOffsetY, 0), "Fishing...");
+            MasterUI.Instance.DamageCallout(transform.position + new Vector3(0, _calloutOffsetY, 0), "Fishing...", _calloutColor);
 
             _fishing = true;
             //Cursor.lockState = CursorLockMode.None;
@@ -53,18 +53,18 @@ public class FishingRod : InteractObject
     {
         yield return new WaitForSeconds(Random.Range(3f, 10f));
         _catchable = true;
-        MasterUI.Instance.DamageCallout(transform.position + new Vector3(0, _calloutOffsetY, 0), _catchCalloutMessage);
+        MasterUI.Instance.DamageCallout(transform.position + new Vector3(0, _calloutOffsetY, 0), _catchCalloutMessage, _calloutColor);
         yield return new WaitForSeconds(1);
-        MasterUI.Instance.DamageCallout(transform.position + new Vector3(0, _calloutOffsetY, 0), _failCalloutMessage);
+        MasterUI.Instance.DamageCallout(transform.position + new Vector3(0, _calloutOffsetY, 0), _failCalloutMessage, _calloutColor);
         EndFishing();
     }
     private void CatchFish()
     {
-        MasterUI.Instance.DamageCallout(transform.position + new Vector3(0, _calloutOffsetY, 0), "Caught a Fish!");
-        if (!_title)
+        MasterUI.Instance.DamageCallout(transform.position + new Vector3(0, _calloutOffsetY, 0), "Caught a Fish!", _calloutColor);
+        if (FindObjectOfType<PlayerInfo>().GetQuestStatus(Quest.Fish) == QuestStatus.NotStarted)
         {
+            FindObjectOfType<PlayerInfo>().UpdateQuestStatus(Quest.Fish, QuestStatus.Completed);
             MasterUI.Instance.UpdateTitle(", Fisherman");
-            _title = true;
         }
         EndFishing();
     }

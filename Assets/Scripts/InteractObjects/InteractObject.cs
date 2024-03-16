@@ -14,6 +14,11 @@ public abstract class InteractObject : MonoBehaviour, IInteractable
 
     public abstract void Interact();
 
+    void OnDisable()
+    {
+        Destroy(_tip.gameObject);
+    }
+    
     protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<PlayerBase>() != null)

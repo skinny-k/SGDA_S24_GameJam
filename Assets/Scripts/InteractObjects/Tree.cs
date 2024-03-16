@@ -22,18 +22,26 @@ public class Tree : MonoBehaviour, IDamageable
 
     IEnumerator TakingUpdate()
     {
-        gameObject.GetComponent<Collider>().enabled = false;
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        foreach (var obj in gameObject.transform.GetComponentsInChildren<Collider>())
+        {
+            obj.enabled = false;
+        }
+        foreach (var obj in gameObject.transform.GetComponentsInChildren<MeshRenderer>())
+        {
+            obj.enabled = false;
+        }
+
         float timeCount = 0.0f;
         while (TreeCat.transform.rotation != Cat.transform.rotation || TreeCat.transform.position != Cat.transform.position)
         {
             timeCount = timeCount + Time.deltaTime;
-            transform.rotation = Quaternion.Slerp(TreeCat.transform.rotation, Cat.transform.rotation, timeCount * 0.1f);
-            TreeCat.transform.position = Vector3.MoveTowards(TreeCat.transform.position, Cat.transform.position, Time.deltaTime * 6);
+            TreeCat.transform.rotation = Quaternion.Slerp(TreeCat.transform.rotation, Cat.transform.rotation, timeCount * 0.2f);
+            TreeCat.transform.position = Vector3.MoveTowards(TreeCat.transform.position, Cat.transform.position, Time.deltaTime * 8);
 
            
             yield return null;
         }
+        TreeCat.SetActive(false);
         Cat.SetActive(true);
         Destroy(gameObject);
     }

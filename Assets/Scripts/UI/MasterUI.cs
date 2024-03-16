@@ -37,6 +37,16 @@ public class MasterUI : MonoBehaviour
         return callout;
     }
 
+    public WorldAnchoredUIWithOffset DamageCallout(Vector3 position, string msg, Color color)
+    {
+        WorldAnchoredUIWithOffset callout = Instantiate(_damageCallout, transform);
+        callout.GetComponent<TMP_Text>().text = msg;
+        callout.GetComponent<TMP_Text>().color = color;
+        callout.SetWorldAnchor(position);
+
+        return callout;
+    }
+
     public Tooltip InteractTooltip(Vector3 position)
     {
         Tooltip tip = Instantiate(_interactTooltip, transform);
@@ -58,9 +68,19 @@ public class MasterUI : MonoBehaviour
         SetPause(!_pausePanel.activeSelf);
     }
 
+    public string GetTitle()
+    {
+        return _playerTitle.text;
+    }
+
     public void UpdateTitle(string titleAddition)
     {
         _playerTitle.text += titleAddition;
+    }
+
+    public void SetTitle(string title)
+    {
+        _playerTitle.text = title;
     }
 
     public void LoadScene(string sceneName)

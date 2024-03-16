@@ -7,7 +7,12 @@ public enum Quest
 {
     None,
     WrangleCows,
-    SaveCat
+    SaveCat,
+    Fish,
+    SitTown,
+    SitWoods,
+    SitPond,
+    PlayTag
 }
 
 // Represents the actual status of the quest. Do not edit this enum without approval and oversight from a programmer

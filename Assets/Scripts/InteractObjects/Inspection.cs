@@ -66,6 +66,11 @@ public class Inspection : MonoBehaviour
         }
         else if (_taken && !_taking && !_returning)
         {
+            if (_itemNameTextView != null && _itemDescriptionTextView != null)
+            {
+                _itemNameTextView.color = new Color(_itemNameTextView.color.r, _itemNameTextView.color.g, _itemNameTextView.color.b, 0);
+                _itemDescriptionTextView.color = new Color(_itemDescriptionTextView.color.r, _itemDescriptionTextView.color.g, _itemDescriptionTextView.color.b, 0);
+            }
             //StartCoroutine(ReturningUpdate());
         }
         
@@ -90,7 +95,7 @@ public class Inspection : MonoBehaviour
         {
             timeCount = timeCount + Time.deltaTime;
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(_rotation), timeCount * _rotationSpeed);
-            transform.position = Vector3.MoveTowards(transform.position, camera.transform.position + camera.transform.forward, Time.deltaTime * _moveSpeed);
+            transform.position = Vector3.MoveTowards(transform.position, camera.transform.position + camera.transform.forward * _cameraOffset, Time.deltaTime * _moveSpeed);
 
             if (_collider.bounds.size.magnitude > 0.4f)
             {
@@ -116,8 +121,7 @@ public class Inspection : MonoBehaviour
         _taken = true;
         while (!_returning)
         {
-            transform.position = Vector3.MoveTowards(transform.position, camera.transform.position + camera.transform.forward, Time.deltaTime * _moveSpeed);
-            Debug.Log(inputs.move.x);
+            transform.position = Vector3.MoveTowards(transform.position, camera.transform.position + camera.transform.forward * _cameraOffset, Time.deltaTime * _moveSpeed);
             if (inputs.move.x>0)
             {
                 transform.rotation = transform.rotation * Quaternion.Euler(90f * Time.deltaTime, 0, 0);
