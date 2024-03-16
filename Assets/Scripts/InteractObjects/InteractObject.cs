@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider))]
 public abstract class InteractObject : MonoBehaviour, IInteractable
@@ -9,7 +10,8 @@ public abstract class InteractObject : MonoBehaviour, IInteractable
     
     protected PlayerBase _playerInRange = null;
     protected Tooltip _tip = null;
-    
+    public UnityEvent OnInteract;
+
     public abstract void Interact();
 
     protected virtual void OnTriggerEnter(Collider other)
