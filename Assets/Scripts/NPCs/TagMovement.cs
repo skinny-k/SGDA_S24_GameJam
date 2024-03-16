@@ -16,14 +16,6 @@ public class TagMovement : NPCMovement
         _tb.SetGame(game);
     }
 
-    protected override void Update()
-    {
-        if (_playingTag == null)
-        {
-            base.Update();
-        }
-    }
-
     public override void RespondToScary(PlayerBase scary)
     {
         if (_playingTag != null)
