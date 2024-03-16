@@ -33,7 +33,12 @@ public class NPCMovement : MonoBehaviour
     [Tooltip("Forces the NPC to find a new spot to flee to if the player is within this distance of its current destination")]
     [SerializeField] protected float _fleeRepathDistance = 5f;
 
+    [Header("Return Settings")]
+    [Tooltip("At this distance from the player, the NPC will teleport back to its base position")]
+    [SerializeField] float _returnDistance = 25f;
+
     protected Vector3 _dest;
+    protected Vector3 _basePosition;
     
     float _wanderTimer = 0;
     Quaternion _trembleRot = Quaternion.identity;
@@ -43,13 +48,34 @@ public class NPCMovement : MonoBehaviour
     protected NPCBase _npc;
     protected NavMeshAgent _agent;
 
-    void Awake()
+    protected virtual void Awake()
     {
         _npc = GetComponent<NPCBase>();
         _agent = GetComponent<NavMeshAgent>();
     }
 
-    public void Wander()
+    protected virtual void Update()
+    {
+        if (Vector3.Distance(transform.position, _basePosition) >= _wanderDistance + 1f && Vector3.Distance(transform.position, GameManager.Player.transform.position) >= _returnDistance)
+        {
+            ReturnToBasePosition();
+        }
+    }
+
+    public virtual void SetBasePosition(Vector3 pos)
+    {
+        _basePosition = pos;
+    }
+
+    protected virtual void ReturnToBasePosition()
+    {
+        _agent.ResetPath();
+        NavMeshHit hit;
+        NavMesh.SamplePosition(_basePosition, out hit, 5f, NavMesh.AllAreas);
+        transform.position = hit.position;
+    }
+
+    public virtual void Wander()
     {
         Vector2 offset = Random.insideUnitCircle.normalized * Random.value * _wanderDistance;
         _dest = _wanderCenter + new Vector3(offset.x, 0, offset.y);

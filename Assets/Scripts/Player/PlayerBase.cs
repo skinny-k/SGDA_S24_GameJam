@@ -27,6 +27,15 @@ public class PlayerBase : MonoBehaviour
     
     void Awake()
     {
+        if (GameManager.Player == null)
+        {
+            GameManager.Player = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
         _im = GetComponent<InputManager>();
         _actions = GetComponent<PlayerActions>();
         _info = GetComponent<PlayerInfo>();
@@ -57,6 +66,11 @@ public class PlayerBase : MonoBehaviour
         {
             _info.SetThreatState(PlayerThreatState.None);
         }
+    }
+
+    void OnDestroy()
+    {
+        GameManager.Player = null;
     }
 
     void Interact()
