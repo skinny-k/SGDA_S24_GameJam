@@ -5,13 +5,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class DeathOrb : InteractObject
+public class Crates : InteractObject
 {
-    //private StarterAssets.StarterAssetsInputs inputs;
     private GameObject _player;
     private CharacterController _controller;
     private BoxCollider _collider;
-    private bool _title = false;
     private bool _sitting = false;
     private Inspection _inspection;
     private StarterAssets.StarterAssetsInputs inputs;
@@ -32,6 +30,7 @@ public class DeathOrb : InteractObject
 
     public void Pickup()
     {
+        
         _tip.gameObject.GetComponent<Image>().enabled = false;
         _tip.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         _inspection.TakeObject();
@@ -43,7 +42,7 @@ public class DeathOrb : InteractObject
             //_collider.enabled = false;
             inputs.cursorInputForLook = false;
             _controller.enabled = false;
-
+           
         }
         else
         {
@@ -54,11 +53,10 @@ public class DeathOrb : InteractObject
     private void EndSitting()
     {
         _playerInRange.Actions.OnInteract -= Interact;
-        _inspection.TakeObject();
         _sitting = false;
         //_collider.enabled = true;
         inputs.cursorInputForLook = true;
-        _controller.enabled = true;
+        _controller.enabled = true;       
         Destroy(gameObject, 0.01f);
     }
 }

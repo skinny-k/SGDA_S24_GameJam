@@ -139,6 +139,7 @@ public class DialogueController : MonoBehaviour
         EnableCursor(false);
 
         OnDialogueEnd?.Invoke();
+        _dialogue.OnDialogueFinish?.Invoke();
         _dialogue.index = 0;
         //_dialogueBox.SetActive(false);
     }
