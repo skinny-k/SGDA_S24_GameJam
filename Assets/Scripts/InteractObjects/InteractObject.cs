@@ -16,7 +16,10 @@ public abstract class InteractObject : MonoBehaviour, IInteractable
 
     void OnDisable()
     {
-        Destroy(_tip.gameObject);
+        if (_tip != null)
+        {
+            Destroy(_tip.gameObject);
+        }
     }
     
     protected virtual void OnTriggerEnter(Collider other)
