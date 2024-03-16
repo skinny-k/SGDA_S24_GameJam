@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6064593410441591874
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4774465375811593808}
+  m_Layer: 0
+  m_Name: CameraTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4774465375811593808
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6064593410441591874}
+  m_LocalRotation: {x: -0, y: 0.9991251, z: -0, w: -0.041820735}
+  m_LocalPosition: {x: 0.065, y: 2.262, z: 1.27}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7143692332840845392}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 184.794, z: 0}
 --- !u!1 &7143692331079855811
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,6 +415,7 @@ GameObject:
   - component: {fileID: 7143692332840845397}
   - component: {fileID: 7143692332840845384}
   - component: {fileID: 7143692332840845396}
+  - component: {fileID: 7531040685136743819}
   m_Layer: 0
   m_Name: Guard
   m_TagString: Untagged
@@ -405,6 +437,7 @@ Transform:
   m_Children:
   - {fileID: 7143692332802652935}
   - {fileID: 532124119563974568}
+  - {fileID: 4774465375811593808}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -515,6 +548,23 @@ MonoBehaviour:
   _damageCalloutMessage: 0
   _calloutOffsetY: 2
   _repathInterval: 1
+--- !u!114 &7531040685136743819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7143692332840845393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1efe872a91137f4b81ea320d94da61e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speakerName: Guard
+  _sentences: []
+  _objects: []
+  index: 0
+  _dialogueController: {fileID: 0}
 --- !u!1 &7904313899903250371
 GameObject:
   m_ObjectHideFlags: 0
