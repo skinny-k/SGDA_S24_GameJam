@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class WorldAnchoredUI : MonoBehaviour
 {
+    public Transform FollowTransform = null;
+    public Vector3 FollowOffset = Vector3.zero;
+    
     protected RectTransform _rt;
     protected Vector3 _worldAnchor;
 
@@ -15,6 +18,12 @@ public class WorldAnchoredUI : MonoBehaviour
     protected virtual void Update()
     {
         Vector3 screenPoint = Camera.main.WorldToScreenPoint(_worldAnchor);
+        
+        if (FollowTransform != null)
+        {
+            screenPoint = Camera.main.WorldToScreenPoint(FollowTransform.position + FollowOffset);
+        }
+        
         screenPoint.x -= Screen.width / 2;
         screenPoint.y -= Screen.height / 2;
 
