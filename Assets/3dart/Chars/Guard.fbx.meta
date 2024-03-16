@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8c37a52f7f843a945ba4acbec35c4fb1
+guid: 7885c57a59b518e408257f6f5add57ce
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -33,9 +33,9 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|ArmatureAction.001
-      takeName: Armature|ArmatureAction.001
-      internalID: -1422011007694221501
+      name: Armature.001|Armature.001|Armature.001|ArmatureAction.001
+      takeName: Armature.001|Armature.001|Armature.001|ArmatureAction.001
+      internalID: -6032481017138890803
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0
@@ -62,9 +62,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Idle_Pose
-      takeName: Armature|Idle_Pose
-      internalID: 9144965699102775931
+      name: Armature.001|Armature.001|Armature.001|Idle_Pose
+      takeName: Armature.001|Armature.001|Armature.001|Idle_Pose
+      internalID: -8580455526173101725
       firstFrame: 0
       lastFrame: 0
       wrapMode: 0
@@ -91,9 +91,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|running
-      takeName: Armature|running
-      internalID: 4738648581838305083
+      name: Armature.001|Armature.001|Armature.001|running
+      takeName: Armature.001|Armature.001|Armature.001|running
+      internalID: 1752617834108034977
       firstFrame: 0
       lastFrame: 61
       wrapMode: 0
@@ -120,9 +120,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|sitting
-      takeName: Armature|sitting
-      internalID: -8469018219200488375
+      name: Armature.001|Armature.001|Armature.001|sitting
+      takeName: Armature.001|Armature.001|Armature.001|sitting
+      internalID: 4940331689763622446
       firstFrame: 0
       lastFrame: 20
       wrapMode: 0
@@ -131,7 +131,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -149,9 +149,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|swing
-      takeName: Armature|swing
-      internalID: -7291964958419166497
+      name: Armature.001|Armature.001|Armature.001|swing
+      takeName: Armature.001|Armature.001|Armature.001|swing
+      internalID: -3438293155164926303
       firstFrame: 0
       lastFrame: 19
       wrapMode: 0
@@ -178,9 +178,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|swing2
-      takeName: Armature|swing2
-      internalID: 1411206344264677821
+      name: Armature.001|Armature.001|Armature.001|swing2
+      takeName: Armature.001|Armature.001|Armature.001|swing2
+      internalID: -1593653733423369924
       firstFrame: 0
       lastFrame: 17
       wrapMode: 0
@@ -207,9 +207,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|walking
-      takeName: Armature|walking
-      internalID: 7168293901883076996
+      name: Armature.001|Armature.001|Armature.001|walking
+      takeName: Armature.001|Armature.001|Armature.001|walking
+      internalID: 6439584779862431480
       firstFrame: 0
       lastFrame: 115
       wrapMode: 0
