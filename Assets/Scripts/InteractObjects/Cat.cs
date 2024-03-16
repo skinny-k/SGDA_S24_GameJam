@@ -33,6 +33,7 @@ public class Cat : InteractObject
 
     public void Pickup()
     {
+        _playerInRange.Actions.OnInteract -= Interact;
         _tip.gameObject.GetComponent<Image>().enabled = false;
         _tip.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         _inspection.TakeObject();
@@ -58,7 +59,7 @@ public class Cat : InteractObject
         //_collider.enabled = true;
         inputs.cursorInputForLook = false;
         _controller.enabled = true;
-        FindObjectOfType<PlayerInfo>().UpdateQuestStatus(Quest.WrangleCows, QuestStatus.Completed);
+        FindObjectOfType<PlayerInfo>().UpdateQuestStatus(Quest.SaveCat, QuestStatus.Completed);
         MasterUI.Instance.UpdateTitle(", " + _rewardTitle);
         Destroy(gameObject);
     }

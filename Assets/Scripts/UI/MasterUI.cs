@@ -37,6 +37,16 @@ public class MasterUI : MonoBehaviour
         return callout;
     }
 
+    public WorldAnchoredUIWithOffset DamageCallout(Vector3 position, string msg, Color color)
+    {
+        WorldAnchoredUIWithOffset callout = Instantiate(_damageCallout, transform);
+        callout.GetComponent<TMP_Text>().text = msg;
+        callout.GetComponent<TMP_Text>().color = color;
+        callout.SetWorldAnchor(position);
+
+        return callout;
+    }
+
     public Tooltip InteractTooltip(Vector3 position)
     {
         Tooltip tip = Instantiate(_interactTooltip, transform);
