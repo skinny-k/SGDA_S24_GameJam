@@ -68,9 +68,19 @@ public class MasterUI : MonoBehaviour
         SetPause(!_pausePanel.activeSelf);
     }
 
+    public string GetTitle()
+    {
+        return _playerTitle.text;
+    }
+
     public void UpdateTitle(string titleAddition)
     {
         _playerTitle.text += titleAddition;
+    }
+
+    public void SetTitle(string title)
+    {
+        _playerTitle.text = title;
     }
 
     public void LoadScene(string sceneName)
