@@ -21,7 +21,6 @@ public class PlayerInfo : MonoBehaviour
     public QuestStatus UpdateQuestStatus(Quest quest, QuestStatus status)
     {
         _questStatuses[quest] = status;
-        Debug.Log(GetNumCompletedQuests());
         OnQuestStatusUpdated?.Invoke(GetNumCompletedQuests());
 
         return _questStatuses[quest];
