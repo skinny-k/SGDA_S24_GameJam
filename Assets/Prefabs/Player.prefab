@@ -136,6 +136,8 @@ MonoBehaviour:
   BottomClamp: 14
   CameraAngleOverride: 0
   LockCameraPosition: 0
+  Animator: {fileID: 0}
+  Sword: {fileID: 0}
 --- !u!114 &448893919119872267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,7 +172,7 @@ MonoBehaviour:
   jump: 0
   sprint: 0
   analogMovement: 0
-  cursorLocked: 1
+  cursorLocked: 0
   cursorInputForLook: 1
 --- !u!114 &7699649017197820919
 MonoBehaviour:
@@ -309,6 +311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackBounds: {x: 0, y: 0, z: 0}
+  Animator: {fileID: 0}
 --- !u!114 &448893919119872271
 MonoBehaviour:
   m_ObjectHideFlags: 0
