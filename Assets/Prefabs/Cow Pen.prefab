@@ -810,6 +810,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tooltipOffset: {x: -2, y: 1, z: 0}
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
   _altRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &3186674000196837061
 GameObject:
@@ -2968,7 +2971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _radius: 3
-  _needsCows: 1
+  _needsCows: 3
   _rewardTitle: He Who Wrangles Cows
 --- !u!65 &3186674001070805187
 BoxCollider:
@@ -2981,8 +2984,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7, y: 2, z: 4}
-  m_Center: {x: 0, y: 1, z: -6}
+  m_Size: {x: 7, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: -5}
 --- !u!54 &3186674001070805185
 Rigidbody:
   m_ObjectHideFlags: 0
