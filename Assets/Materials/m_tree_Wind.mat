@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: test_wind
+  m_Name: m_tree_Wind
   m_Shader: {fileID: -6465566751694194690, guid: 8c4044837c0502c40806f4a1856c7de4, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
