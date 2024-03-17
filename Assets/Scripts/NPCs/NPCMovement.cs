@@ -47,6 +47,7 @@ public class NPCMovement : MonoBehaviour
     // Components
     protected NPCBase _npc;
     protected NavMeshAgent _agent;
+    public Animator Animator;
 
     protected virtual void Awake()
     {
@@ -54,6 +55,21 @@ public class NPCMovement : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
     }
 
+    private void Update()
+    {
+        if (Animator != null)
+        {
+            if (_agent.velocity.magnitude > 0)
+            {
+                Animator.SetBool("is_Walking", true);
+            }
+            else
+            {
+                Animator.SetBool("is_Walking", false);
+            }
+
+        }
+    }
     public virtual void Wander()
     {
         Vector2 offset = Random.insideUnitCircle.normalized * Random.value * _wanderDistance;
