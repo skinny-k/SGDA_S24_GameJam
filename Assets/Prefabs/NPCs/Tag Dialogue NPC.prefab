@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 352130959420939155}
   - component: {fileID: 352130959420939158}
   m_Layer: 0
-  m_Name: Tag NPC
+  m_Name: Tag Dialogue NPC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -495,7 +495,6 @@ MonoBehaviour:
   _maxAdditionalFlee: 5
   _fleeRepathDistance: 5
   _returnDistance: 25
-  DialogueNPC: {fileID: 0}
 --- !u!114 &352130959420939155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,25 +522,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speakerName: 
-  _sentences:
-  - Catch me if you can!
+  _sentences: []
   _objects: []
   index: 0
-  OnDialogueFinish:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: TagGame, Assembly-CSharp
-        m_MethodName: StartTagGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   _dialogueController: {fileID: 0}
 --- !u!1 &1095163240209382002
 GameObject:
