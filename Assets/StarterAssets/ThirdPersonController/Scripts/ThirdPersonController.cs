@@ -108,6 +108,7 @@ namespace StarterAssets
         private PlayerInput _playerInput;
 #endif
         public Animator Animator;
+        public GameObject Sword;
         private Animator _animator;
         private CharacterController _controller;
         private StarterAssetsInputs _input;
@@ -285,24 +286,41 @@ namespace StarterAssets
                                 new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
                 // update animator if using character
-                if (_input.sprint && _speed > 2 && !Animator.GetBool(_run))
+                //i dont like animations now
+                if (Animator.GetCurrentAnimatorStateInfo(0).shortNameHash == Animator.StringToHash("Swing1"))
                 {
-                    Animator.SetBool(_run, true);
+                    Sword.SetActive(true);
                     Animator.SetBool(_walk, false);
+                    Animator.SetBool(_run, false);
+                    Animator.SetBool(_sit, false);
                 }
+                else
+                {
+                    Sword.SetActive(false);
+                    if (_input.sprint && _speed > 2 && !Animator.GetBool(_run))
+                    {
+                        Animator.SetBool(_run, true);
+                        Animator.SetBool(_walk, false);
+                    }
+
+
+                    if (!_input.sprint && _speed > 2 && !Animator.GetBool(_walk))
+                    {
+                        Animator.SetBool(_walk, true);
+                        Animator.SetBool(_run, false);
+                    }
+
+
+                    if (_speed < 2 && !Animator.GetBool(_sit))
+                    {
+                        Animator.SetBool(_walk, false);
+                        Animator.SetBool(_run, false);
+                        Animator.SetBool(_sit, false);
+                    }
+                }
+
                 
 
-                if (!_input.sprint && _speed > 2 && !Animator.GetBool(_walk))
-                {
-                    Animator.SetBool(_walk, true);
-                    Animator.SetBool(_run, false);
-                }
-                
-                
-                /**if (_speed < 2 && !_animator.GetBool(_swing1) && !_animator.GetBool(_swing2) && !_animator.GetBool(_sit))
-                {
-                    Animator.Play("New State", 0, 0.0f);
-                }**/
                 if (_hasAnimator)
                 {
                     _animator.SetFloat(_animIDSpeed, _animationBlend);
