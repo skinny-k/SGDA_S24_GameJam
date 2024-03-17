@@ -16,6 +16,11 @@ public class MasterUI : MonoBehaviour
     [SerializeField] Tooltip _interactTooltip;
 
     string _baseName;
+
+    Image _fadePanel;
+    bool _fade = false;
+    float _fadeTime = 1.5f;
+    float _currentFade = 0f;
     
     public static MasterUI Instance;
 
@@ -28,6 +33,19 @@ public class MasterUI : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+
+        _fadePanel = transform.Find("FadePanel").GetComponent<Image>();
+    }
+
+    void Update()
+    {
+        if (_fade)
+        {
+            _currentFade += Time.deltaTime;
+            Color newColor = _fadePanel.color;
+            newColor.a = Mathf.Lerp(newColor.a, 1, _currentFade / _fadeTime);
+            _fadePanel.color = newColor;
         }
     }
 
@@ -56,6 +74,20 @@ public class MasterUI : MonoBehaviour
         tip.SetWorldAnchor(position);
 
         return tip;
+    }
+
+    public void StartFadeToBlack(float time = 1.5f)
+    {
+        _fadePanel.color = new Color(0, 0, 0, 0);
+        _fadeTime = time;
+        _fade = true;
+    }
+
+    public void StartFadeToWhite(float time = 1.5f)
+    {
+        _fadePanel.color = new Color(1, 1, 1, 0);
+        _fadeTime = time;
+        _fade = true;
     }
 
     public void SetPause(bool state)
