@@ -85,13 +85,14 @@ public class MasterUI : MonoBehaviour
     {
         if (_baseName == null)
         {
-            _baseName = newName;
-            _playerTitle.text = _baseName;
+            _playerTitle.text = newName;
         }
         else
         {
             _playerTitle.text = Regex.Replace(_playerTitle.text, _baseName, newName);
         }
+
+        _baseName = newName;
     }
 
     public void LoadScene(string sceneName)
