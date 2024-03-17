@@ -98,9 +98,16 @@ namespace StarterAssets
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
 
+        private int _walk;
+        private int _run;
+        private int _sit;
+        private int _swing1;
+        private int _swing2;
+
 #if ENABLE_INPUT_SYSTEM 
         private PlayerInput _playerInput;
 #endif
+        public Animator Animator;
         private Animator _animator;
         private CharacterController _controller;
         private StarterAssetsInputs _input;
@@ -168,6 +175,10 @@ namespace StarterAssets
 
         private void AssignAnimationIDs()
         {
+            _walk = Animator.StringToHash("is_walking");
+            _run = Animator.StringToHash("is_running");
+            _sit = Animator.StringToHash("is_Sitting");
+
             _animIDSpeed = Animator.StringToHash("Speed");
             _animIDGrounded = Animator.StringToHash("Grounded");
             _animIDJump = Animator.StringToHash("Jump");
@@ -272,6 +283,24 @@ namespace StarterAssets
                              new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
             // update animator if using character
+            if (_input.sprint && _speed > 2 && !Animator.GetBool(_run))
+            {
+                Animator.SetBool(_run, true);
+                Animator.SetBool(_walk, false);
+            }
+            
+
+            if (!_input.sprint && _speed > 2 && !Animator.GetBool(_walk))
+            {
+                Animator.SetBool(_walk, true);
+                Animator.SetBool(_run, false);
+            }
+            
+            
+            /**if (_speed < 2 && !_animator.GetBool(_swing1) && !_animator.GetBool(_swing2) && !_animator.GetBool(_sit))
+            {
+                Animator.Play("New State", 0, 0.0f);
+            }**/
             if (_hasAnimator)
             {
                 _animator.SetFloat(_animIDSpeed, _animationBlend);
