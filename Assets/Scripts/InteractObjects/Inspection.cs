@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class Inspection : MonoBehaviour
 {
@@ -61,11 +62,15 @@ public class Inspection : MonoBehaviour
     public void TakeObject()
     {
         if (!_taken && !_taking && !_returning)
-        {           
+        {
+            inputs.cursorInputForLook = false;
+            inputs.look.x = 0;
+            inputs.look.y = 0;
             StartCoroutine(TakingUpdate());                     
         }
         else if (_taken && !_taking && !_returning)
         {
+            inputs.cursorInputForLook = true;
             if (_itemNameTextView != null && _itemDescriptionTextView != null)
             {
                 _itemNameTextView.color = new Color(_itemNameTextView.color.r, _itemNameTextView.color.g, _itemNameTextView.color.b, 0);
@@ -73,7 +78,20 @@ public class Inspection : MonoBehaviour
             }
             //StartCoroutine(ReturningUpdate());
         }
-        
+        else if (_taking)
+        {
+            StopAllCoroutines();
+            inputs.cursorInputForLook = true;
+            if (_itemNameTextView != null && _itemDescriptionTextView != null)
+            {
+                _itemNameTextView.color = new Color(_itemNameTextView.color.r, _itemNameTextView.color.g, _itemNameTextView.color.b, 0);
+                _itemDescriptionTextView.color = new Color(_itemDescriptionTextView.color.r, _itemDescriptionTextView.color.g, _itemDescriptionTextView.color.b, 0);
+            }
+            _returning = false;
+            _taken = false;
+            //StartCoroutine(ReturningUpdate());
+        }
+
     }
 
     public void Return()
@@ -104,24 +122,24 @@ public class Inspection : MonoBehaviour
             _itemDescriptionTextView.text = _itemDescription;
         }
 
-        while (gameObject.transform.rotation != Quaternion.Euler(_rotation) || (gameObject.transform.position - (camera.transform.position + camera.transform.forward * _cameraOffset)).magnitude > 5)
+        while (gameObject.transform.rotation != Quaternion.Euler(_rotation) || (gameObject.transform.position - (camera.transform.position + camera.transform.forward * _cameraOffset)).magnitude > 5 || (_collider.bounds.size.magnitude > 1f || _collider.bounds.size.magnitude < 0.8f))
         {
             timeCount = timeCount + Time.deltaTime;
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(_rotation), timeCount * _rotationSpeed);
             transform.position = Vector3.MoveTowards(transform.position, camera.transform.position + camera.transform.forward * _cameraOffset, Time.deltaTime * _moveSpeed);
 
-            if (_collider.bounds.size.magnitude > 0.4f)
+            if (_collider.bounds.size.magnitude > 1f)
             {
-                gameObject.transform.localScale = gameObject.transform.localScale * 0.998f;
+                gameObject.transform.localScale = gameObject.transform.localScale * 0.99f;
             }
-            else if (_collider.bounds.size.magnitude < 0.3f)
+            else if (_collider.bounds.size.magnitude < 0.8f)
             {
-                gameObject.transform.localScale = gameObject.transform.localScale * 1.002f;
+                gameObject.transform.localScale = gameObject.transform.localScale * 1.01f;
             }
             if (_itemNameTextView != null && _itemDescriptionTextView != null)
             {
-                _itemNameTextView.color = new Color(_itemNameTextView.color.r, _itemNameTextView.color.g, _itemNameTextView.color.b, _itemNameTextView.color.a + 0.01f);
-                _itemDescriptionTextView.color = new Color(_itemDescriptionTextView.color.r, _itemDescriptionTextView.color.g, _itemDescriptionTextView.color.b, _itemDescriptionTextView.color.a + 0.01f);
+                _itemNameTextView.color = new Color(_itemNameTextView.color.r, _itemNameTextView.color.g, _itemNameTextView.color.b, _itemNameTextView.color.a + 0.05f);
+                _itemDescriptionTextView.color = new Color(_itemDescriptionTextView.color.r, _itemDescriptionTextView.color.g, _itemDescriptionTextView.color.b, _itemDescriptionTextView.color.a + 0.05f);
             }
 
             yield return null;
