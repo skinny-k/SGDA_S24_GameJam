@@ -65,18 +65,18 @@ MonoBehaviour:
     value: 0
   saturation:
     overrideState: 1
-    value: 6
+    value: 5
   brightness:
     overrideState: 1
     value: 0
   postExposure:
     overrideState: 1
-    value: -0.05
+    value: -0.3
   contrast:
     overrideState: 1
-    value: 2
+    value: 5
   mixerRedOutRedIn:
-    overrideState: 0
+    overrideState: 1
     value: 110
   mixerRedOutGreenIn:
     overrideState: 1
@@ -98,7 +98,7 @@ MonoBehaviour:
     value: 0
   mixerBlueOutGreenIn:
     overrideState: 1
-    value: 0
+    value: 3
   mixerBlueOutBlueIn:
     overrideState: 1
     value: 100
@@ -106,11 +106,11 @@ MonoBehaviour:
     overrideState: 1
     value: {x: 0.9626722, y: 0.94578373, z: 1, w: 0}
   gamma:
-    overrideState: 1
+    overrideState: 0
     value: {x: 1, y: 1, z: 1, w: 0}
   gain:
     overrideState: 1
-    value: {x: 1, y: 1, z: 1, w: 0}
+    value: {x: 1, y: 0.9718182, z: 0.930877, w: 0}
   masterCurve:
     overrideState: 1
     value:
@@ -1397,7 +1397,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.3
+    value: 0.45
   color:
     overrideState: 1
     value: {r: 0, g: 0, b: 0, a: 1}
@@ -1415,7 +1415,7 @@ MonoBehaviour:
     value: -12
   thicknessModifier:
     overrideState: 1
-    value: 2
+    value: 5
   directLightingStrength:
     overrideState: 1
     value: 0
