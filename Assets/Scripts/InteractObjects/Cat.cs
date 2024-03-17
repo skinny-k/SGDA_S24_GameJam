@@ -33,7 +33,6 @@ public class Cat : InteractObject
 
     public void Pickup()
     {
-        _playerInRange.Actions.OnInteract -= Interact;
         _tip.gameObject.GetComponent<Image>().enabled = false;
         _tip.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         _inspection.TakeObject();
@@ -55,12 +54,13 @@ public class Cat : InteractObject
 
     private void EndSitting()
     {
+        _playerInRange.Actions.OnInteract -= Interact;
         _sitting = false;
         //_collider.enabled = true;
-        inputs.cursorInputForLook = false;
+        inputs.cursorInputForLook = true;
         _controller.enabled = true;
         FindObjectOfType<PlayerInfo>().UpdateQuestStatus(Quest.SaveCat, QuestStatus.Completed);
         MasterUI.Instance.UpdateTitle(", " + _rewardTitle);
-        Destroy(gameObject);
+        Destroy(gameObject, 0.01f);
     }
 }

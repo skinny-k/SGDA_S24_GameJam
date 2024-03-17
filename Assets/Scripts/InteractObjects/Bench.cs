@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Windows;
+using UnityEngine.UI;
 
 public class Bench : InteractObject
 {
@@ -20,11 +20,13 @@ public class Bench : InteractObject
     public GameObject lookAt;
     public GameObject PlayerModel;
     private GameObject _playerModel;
-
+    private Animator _animator;
+    private int _sit;
     private void Awake()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
         _controller = _player.GetComponent<CharacterController>();
+        _sit = Animator.StringToHash("is_Sitting");
         //_collider = gameObject.GetComponent<BoxCollider>();
     }
 
@@ -47,7 +49,10 @@ public class Bench : InteractObject
             _player.transform.GetChild(1).gameObject.SetActive(false);
 
             _playerModel = Instantiate(PlayerModel, gameObject.transform.position, location.transform.rotation);
-            _playerModel.GetComponent<Animator>().Play("Sitting");
+            _playerModel.GetComponent<Animator>().SetBool(_sit, true);
+
+            _tip.gameObject.GetComponent<Image>().enabled = false;
+            _tip.gameObject.transform.GetChild(0).gameObject.SetActive(false);
             //_player.transform.position = gameObject.transform.position;
             //_player.transform.rotation = location.transform.rotation;
             npcCamera.transform.position = location.transform.position;

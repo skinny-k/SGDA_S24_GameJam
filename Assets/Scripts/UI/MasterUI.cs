@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,8 @@ public class MasterUI : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField] WorldAnchoredUIWithOffset _damageCallout;
     [SerializeField] Tooltip _interactTooltip;
+
+    string _baseName;
     
     public static MasterUI Instance;
 
@@ -68,19 +71,27 @@ public class MasterUI : MonoBehaviour
         SetPause(!_pausePanel.activeSelf);
     }
 
-    public string GetTitle()
-    {
-        return _playerTitle.text;
-    }
-
     public void UpdateTitle(string titleAddition)
     {
         _playerTitle.text += titleAddition;
     }
 
-    public void SetTitle(string title)
+    public void ReplaceTitle(string oldTitle, string newTitle)
     {
-        _playerTitle.text = title;
+        _playerTitle.text = Regex.Replace(_playerTitle.text, ", " + oldTitle, ", " + newTitle);
+    }
+
+    public void SetBaseName(string newName)
+    {
+        if (_baseName == null)
+        {
+            _baseName = newName;
+            _playerTitle.text = _baseName;
+        }
+        else
+        {
+            _playerTitle.text = Regex.Replace(_playerTitle.text, _baseName, newName);
+        }
     }
 
     public void LoadScene(string sceneName)

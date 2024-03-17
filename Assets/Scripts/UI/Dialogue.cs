@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public class Dialogue : MonoBehaviour
@@ -16,6 +17,8 @@ public class Dialogue : MonoBehaviour
     public GameObject[] _objects;
     [HideInInspector]
     public int index = 0;
+
+    public UnityEvent OnDialogueFinish;
 
     public DialogueController _dialogueController;
 

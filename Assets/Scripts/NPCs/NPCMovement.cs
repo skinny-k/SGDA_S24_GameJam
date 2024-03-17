@@ -54,27 +54,6 @@ public class NPCMovement : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
     }
 
-    protected virtual void Update()
-    {
-        if (Vector3.Distance(transform.position, _basePosition) >= _wanderDistance + 1f && Vector3.Distance(transform.position, GameManager.Player.transform.position) >= _returnDistance)
-        {
-            ReturnToBasePosition();
-        }
-    }
-
-    public virtual void SetBasePosition(Vector3 pos)
-    {
-        _basePosition = pos;
-    }
-
-    protected virtual void ReturnToBasePosition()
-    {
-        _agent.ResetPath();
-        NavMeshHit hit;
-        NavMesh.SamplePosition(_basePosition, out hit, 5f, NavMesh.AllAreas);
-        transform.position = hit.position;
-    }
-
     public virtual void Wander()
     {
         Vector2 offset = Random.insideUnitCircle.normalized * Random.value * _wanderDistance;

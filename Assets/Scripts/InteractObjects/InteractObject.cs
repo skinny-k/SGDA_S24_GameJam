@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider))]
-public abstract class InteractObject : MonoBehaviour, IInteractable
+public class InteractObject : MonoBehaviour, IInteractable
 {
     [SerializeField] protected Vector3 _tooltipOffset = Vector3.zero;
     
@@ -12,11 +12,17 @@ public abstract class InteractObject : MonoBehaviour, IInteractable
     protected Tooltip _tip = null;
     public UnityEvent OnInteract;
 
-    public abstract void Interact();
+    public virtual void Interact()
+    {
+        OnInteract?.Invoke();
+    }
 
     void OnDisable()
     {
-        Destroy(_tip.gameObject);
+        if (_tip != null)
+        {
+            Destroy(_tip.gameObject);
+        }
     }
     
     protected virtual void OnTriggerEnter(Collider other)
