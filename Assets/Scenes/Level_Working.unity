@@ -5030,7 +5030,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2070925441746177913, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
       propertyPath: m_Lens.FieldOfView
-      value: 20
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 2070925442191277752, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
       propertyPath: CameraDistance
@@ -77360,17 +77360,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7543990431754454819, guid: 22d6e4ab1d56d234f9825b410564d5b3, type: 3}
   m_PrefabInstance: {fileID: 2027829736}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2028608251 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5959220608827922258, guid: b9aba1236da1d0349a650d6a5754ab0c, type: 3}
-  m_PrefabInstance: {fileID: 5724533870901706549}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b7a3ff454bd13343af550578f164048, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2031355040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82166,6 +82155,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 475583833}
     - target: {fileID: 5724533871749657635, guid: b9aba1236da1d0349a650d6a5754ab0c, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 192638182}
+    - target: {fileID: 5724533871749657635, guid: b9aba1236da1d0349a650d6a5754ab0c, type: 3}
       propertyPath: _itemNameTextView
       value: 
       objectReference: {fileID: 1866900974}
@@ -82173,34 +82166,6 @@ PrefabInstance:
       propertyPath: _itemDescriptionTextView
       value: 
       objectReference: {fileID: 760331578}
-    - target: {fileID: 5959220608827922258, guid: b9aba1236da1d0349a650d6a5754ab0c, type: 3}
-      propertyPath: Attacked.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5959220608827922258, guid: b9aba1236da1d0349a650d6a5754ab0c, type: 3}
-      propertyPath: Attacked.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5959220608827922258, guid: b9aba1236da1d0349a650d6a5754ab0c, type: 3}
-      propertyPath: Attacked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2028608251}
-    - target: {fileID: 5959220608827922258, guid: b9aba1236da1d0349a650d6a5754ab0c, type: 3}
-      propertyPath: Attacked.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5959220608827922258, guid: b9aba1236da1d0349a650d6a5754ab0c, type: 3}
-      propertyPath: Attacked.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TakeDamage
-      objectReference: {fileID: 0}
-    - target: {fileID: 5959220608827922258, guid: b9aba1236da1d0349a650d6a5754ab0c, type: 3}
-      propertyPath: Attacked.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Tree, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5959220608827922258, guid: b9aba1236da1d0349a650d6a5754ab0c, type: 3}
-      propertyPath: Attacked.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 8349348158029328129, guid: b9aba1236da1d0349a650d6a5754ab0c, type: 3}
       propertyPath: _dialogueController
       value: 
