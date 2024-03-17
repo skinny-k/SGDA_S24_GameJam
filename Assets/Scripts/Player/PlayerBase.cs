@@ -44,7 +44,7 @@ public class PlayerBase : MonoBehaviour
 
     private void Start()
     {
-        MasterUI.Instance.UpdateTitle(_playerTitle);
+        MasterUI.Instance.SetBaseName(_playerTitle);
     }
 
     void OnEnable()
