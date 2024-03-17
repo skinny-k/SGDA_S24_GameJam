@@ -37,16 +37,33 @@ public class GuardMovement : NPCMovement
         }
     }
 
-    void Update()
+    private void Update()
     {
+        if (Animator != null)
+        {
+            if (_agent.velocity.magnitude > 0)
+            {
+                Animator.SetBool("is_Walking", true);
+            }
+            else
+            {
+                Animator.SetBool("is_Walking", false);
+            }
+
+        }
         _attackTimer -= Time.deltaTime;
-        _weapon.localPosition = Vector3.MoveTowards(_weapon.localPosition, _weaponTargetPosition, _attackDistance * 2 * Time.deltaTime);
+        //_weapon.localPosition = Vector3.MoveTowards(_weapon.localPosition, _weaponTargetPosition, _attackDistance * 2 * Time.deltaTime);
     }
 
     public override void RespondToKiller(PlayerBase killer)
     {
         _repathTimer -= Time.deltaTime;
-        
+
+        if (_weapon != null)
+        {
+            _weapon.gameObject.SetActive(true);
+        }
+
         if (Vector3.Distance(transform.position, killer.transform.position) > _attackDistance)
         {
             if (_repathTimer <= 0)
@@ -83,14 +100,22 @@ public class GuardMovement : NPCMovement
             TryAttack(scary);
         }
 
-        _weapon.localRotation = Quaternion.Euler(_weaponAttackRotation);
+        if (_weapon != null)
+        {
+            _weapon.gameObject.SetActive(true);
+        }
+        //_weapon.localRotation = Quaternion.Euler(_weaponAttackRotation);
     }
 
     public override void RespondToPassive(PlayerBase passive)
     {
         base.RespondToPassive(passive);
-        
-        _weapon.localRotation = Quaternion.Euler(_weaponDefaultRotation);
+
+        if (_weapon != null)
+        {
+            _weapon.gameObject.SetActive(false);
+        }
+        //_weapon.localRotation = Quaternion.Euler(_weaponDefaultRotation);
     }
 
     public void TryAttack(PlayerBase player)
@@ -99,7 +124,12 @@ public class GuardMovement : NPCMovement
         {
             if (_attackTimer <= 0)
             {
-                StartCoroutine(AttackAnim());
+                if (Animator != null)
+                {
+                    Animator.ResetTrigger("Swing");
+                    Animator.SetTrigger("Swing");
+                }
+                //StartCoroutine(AttackAnim());
                 MasterUI.Instance.DamageCallout(player.transform.position + new Vector3(0, _calloutOffsetY, 0), _damageCalloutMessage);
                 _attackTimer = _attackInterval;
             }

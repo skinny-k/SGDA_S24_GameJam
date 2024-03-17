@@ -51,13 +51,21 @@ public class Bench : InteractObject
             _playerModel = Instantiate(PlayerModel, gameObject.transform.position, location.transform.rotation);
             _playerModel.GetComponent<Animator>().SetBool(_sit, true);
 
-            _tip.gameObject.GetComponent<Image>().enabled = false;
-            _tip.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            if (_tip != null)
+            {
+                _tip.gameObject.GetComponent<Image>().enabled = false;
+                _tip.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            }
             //_player.transform.position = gameObject.transform.position;
             //_player.transform.rotation = location.transform.rotation;
-            npcCamera.transform.position = location.transform.position;
-            npcCamera.LookAt = lookAt.transform;
-            npcCamera.Priority = 11;
+
+            if (npcCamera != null)
+            {
+                npcCamera.transform.position = location.transform.position;
+                npcCamera.LookAt = lookAt.transform;
+                npcCamera.Priority = 11;
+            }
+            
             StartCoroutine(SittingTimer());
         }
         else
@@ -65,15 +73,21 @@ public class Bench : InteractObject
             EndSitting();
         }
     }
+
     IEnumerator SittingTimer()
     {
         yield return new WaitForSeconds(8);
-        if (FindObjectOfType<PlayerInfo>().GetQuestStatus(_quest) == QuestStatus.NotStarted)
+
+        if (_quest != Quest.None && FindObjectOfType<PlayerInfo>().GetQuestStatus(_quest) == QuestStatus.NotStarted)
         {
             FindObjectOfType<PlayerInfo>().UpdateQuestStatus(_quest, QuestStatus.Completed);
-            MasterUI.Instance.UpdateTitle(_rewardTitle);
+            if (_rewardTitle != null)
+            {
+                MasterUI.Instance.UpdateTitle(_rewardTitle);
+            }
         }
     }
+
     private void EndSitting()
     {
         StopAllCoroutines();
@@ -82,6 +96,10 @@ public class Bench : InteractObject
         _sitting = false;
         //_collider.enabled = true;
         _controller.enabled = true;
-        npcCamera.Priority = 0;
+
+        if (npcCamera != null)
+        {
+            npcCamera.Priority = 0;
+        }
     }
 }

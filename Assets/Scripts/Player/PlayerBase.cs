@@ -83,6 +83,7 @@ public class PlayerBase : MonoBehaviour
         if(_actions.Attack())
         {
             _info.SetThreatState(PlayerThreatState.Killer);
+            MasterUI.Instance.SetBaseName(_playerTitle);
         }
     }
 }

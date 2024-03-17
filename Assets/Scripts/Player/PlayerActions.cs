@@ -10,7 +10,8 @@ public class PlayerActions : MonoBehaviour
     PlayerBase _player;
 
     public event Action OnInteract;
-    
+    public Animator Animator;
+
     void Awake()
     {
         _player = GetComponent<PlayerBase>();
@@ -33,6 +34,12 @@ public class PlayerActions : MonoBehaviour
 
     public bool Attack()
     {
+        if (Animator != null)
+        {            
+            Animator.ResetTrigger("Swing1");
+            Animator.SetTrigger("Swing1");
+        }
+        
         bool result = false;
         
         RaycastHit[] hits = Physics.BoxCastAll(transform.TransformPoint(new Vector3(0, 0.5f, _attackBounds.z)), _attackBounds, transform.forward, Quaternion.identity, 0);
@@ -48,7 +55,7 @@ public class PlayerActions : MonoBehaviour
                 }
             }
         }
-
+        
         return result;
     }
 }

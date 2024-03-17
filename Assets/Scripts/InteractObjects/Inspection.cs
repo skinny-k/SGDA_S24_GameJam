@@ -76,6 +76,19 @@ public class Inspection : MonoBehaviour
         
     }
 
+    public void Return()
+    {
+        StopAllCoroutines();
+        gameObject.transform.position = _originalPosition;
+        gameObject.transform.rotation = _originalRotation;
+        if (_itemNameTextView != null && _itemDescriptionTextView != null)
+        {
+            _itemNameTextView.color = new Color(_itemNameTextView.color.r, _itemNameTextView.color.g, _itemNameTextView.color.b, 0);
+            _itemDescriptionTextView.color = new Color(_itemDescriptionTextView.color.r, _itemDescriptionTextView.color.g, _itemDescriptionTextView.color.b, 0);
+        }
+        _returning = false;
+        _taken = false;
+    }
     IEnumerator TakingUpdate()
     {
         _taking = true;

@@ -6,6 +6,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Collider))]
 public class InteractObject : MonoBehaviour, IInteractable
 {
+    [SerializeField] protected bool _hasTooltip = true;
     [SerializeField] protected Vector3 _tooltipOffset = Vector3.zero;
     
     protected PlayerBase _playerInRange = null;
@@ -19,7 +20,7 @@ public class InteractObject : MonoBehaviour, IInteractable
 
     void OnDisable()
     {
-        if (_tip != null)
+        if (_hasTooltip && _tip != null)
         {
             Destroy(_tip.gameObject);
         }
@@ -29,7 +30,11 @@ public class InteractObject : MonoBehaviour, IInteractable
     {
         if (other.GetComponent<PlayerBase>() != null)
         {
-            _tip = MasterUI.Instance.InteractTooltip(transform.TransformPoint(_tooltipOffset));
+            if (_hasTooltip)
+            {
+                _tip = MasterUI.Instance.InteractTooltip(transform.TransformPoint(_tooltipOffset));
+            }
+            
             _playerInRange = other.GetComponent<PlayerBase>();
             _playerInRange.Actions.OnInteract += Interact;
         }
@@ -39,7 +44,11 @@ public class InteractObject : MonoBehaviour, IInteractable
     {
         if (other.GetComponent<PlayerBase>() != null)
         {
-            Destroy(_tip.gameObject);
+            if (_hasTooltip)
+            {
+                Destroy(_tip.gameObject);
+            }
+
             _playerInRange.Actions.OnInteract -= Interact;
             _playerInRange = null;
         }
