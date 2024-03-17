@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mat_Water
+  m_Name: Mat_Water_Pond
   m_Shader: {fileID: -6465566751694194690, guid: f449863946c31af41b3196d4acec1fa6, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -78,9 +78,9 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _Foam_Speed: 0.5
-    - _Foam_amunt: 3
-    - _Foam_cut_off: 1.8
-    - _Foam_scale: 150
+    - _Foam_amunt: 3.46
+    - _Foam_cut_off: 2.5
+    - _Foam_scale: 50
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -89,11 +89,11 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _Refraction_Speed: 0.1
-    - _Refraction_strenght: 1
+    - _Refraction_strenght: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Tiling: 30
+    - _Tiling: 10
     - _UVSec: 0
     - _Water_depth: 10
     - _ZWrite: 1
