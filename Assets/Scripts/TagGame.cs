@@ -44,7 +44,7 @@ public class TagGame : MonoBehaviour
         if (quests.GetQuestStatus(Quest.PlayTag) == QuestStatus.InProgress)
         {
             quests.UpdateQuestStatus(Quest.PlayTag, QuestStatus.Completed);
-            MasterUI.Instance.SetTitle(Regex.Replace(MasterUI.Instance.GetTitle(), ", " + _inProgressTitle, ", " + _rewardTitle));
+            MasterUI.Instance.ReplaceTitle(_inProgressTitle, _rewardTitle);
         }
     }
 }

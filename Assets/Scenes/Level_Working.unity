@@ -3415,7 +3415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8369590943877117459, guid: aa65214a5637241f69c64258d85c8ad7, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8369590943877117459, guid: aa65214a5637241f69c64258d85c8ad7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -39090,6 +39090,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1297718372}
     m_Modifications:
     - target: {fileID: 7614002056208563166, guid: a56763eb39cec45ef99bff0b041fa4ad, type: 3}
+      propertyPath: _dialogueController
+      value: 
+      objectReference: {fileID: 789385665}
+    - target: {fileID: 7614002056208563166, guid: a56763eb39cec45ef99bff0b041fa4ad, type: 3}
       propertyPath: _sentences.Array.size
       value: 16
       objectReference: {fileID: 0}
@@ -39143,7 +39147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7614002056208563166, guid: a56763eb39cec45ef99bff0b041fa4ad, type: 3}
       propertyPath: _sentences.Array.data[12]
-      value: You're name is Dave now.
+      value: Your name is Dave now.
       objectReference: {fileID: 0}
     - target: {fileID: 7614002056208563166, guid: a56763eb39cec45ef99bff0b041fa4ad, type: 3}
       propertyPath: _sentences.Array.data[13]
@@ -39155,11 +39159,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7614002056208563166, guid: a56763eb39cec45ef99bff0b041fa4ad, type: 3}
       propertyPath: _sentences.Array.data[15]
-      value: Okay then. Bye Dave!
+      value: Okay then. Bye, Dave!
       objectReference: {fileID: 0}
     - target: {fileID: 7614002056208563166, guid: a56763eb39cec45ef99bff0b041fa4ad, type: 3}
       propertyPath: OnDialogueFinish.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7614002056208563166, guid: a56763eb39cec45ef99bff0b041fa4ad, type: 3}
       propertyPath: OnDialogueFinish.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -39175,11 +39179,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7614002056208563166, guid: a56763eb39cec45ef99bff0b041fa4ad, type: 3}
       propertyPath: OnDialogueFinish.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UpdateTitle
+      value: SetBaseName
       objectReference: {fileID: 0}
     - target: {fileID: 7614002056208563166, guid: a56763eb39cec45ef99bff0b041fa4ad, type: 3}
       propertyPath: OnDialogueFinish.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: MasterUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7614002056208563166, guid: a56763eb39cec45ef99bff0b041fa4ad, type: 3}
+      propertyPath: OnDialogueFinish.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Dave
       objectReference: {fileID: 0}
     - target: {fileID: 7614002056208563166, guid: a56763eb39cec45ef99bff0b041fa4ad, type: 3}
       propertyPath: OnDialogueFinish.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
