@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CowPen : MonoBehaviour
 {
     [SerializeField] float _radius = 3f;
     [SerializeField] int _needsCows = 1;
     [SerializeField] string _rewardTitle = "He Who Wrangles Cows";
-    
+
+    public UnityEvent OnQuestComplete;
+
     List<CowMovement> _cows = new List<CowMovement>();
 
     public float Radius => _radius;
@@ -27,6 +30,7 @@ public class CowPen : MonoBehaviour
                 {
                     FindObjectOfType<PlayerInfo>().UpdateQuestStatus(Quest.WrangleCows, QuestStatus.Completed);
                     MasterUI.Instance.UpdateTitle(", " + _rewardTitle);
+                    OnQuestComplete?.Invoke();
                 }
             }
         }
