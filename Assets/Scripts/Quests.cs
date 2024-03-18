@@ -14,7 +14,8 @@ public enum Quest
     SitPond,
     PlayTag,
     PetDog,
-    TeaParty
+    TeaParty,
+    Fetch
 }
 
 // Represents the actual status of the quest. Do not edit this enum without approval and oversight from a programmer

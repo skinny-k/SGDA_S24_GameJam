@@ -21,6 +21,7 @@ public class PlayerInfo : MonoBehaviour
         return _questStatuses[quest];
     }
 
+
     public QuestStatus GetQuestStatus(Quest quest)
     {
         QuestStatus result = QuestStatus.NotStarted;
@@ -40,5 +41,15 @@ public class PlayerInfo : MonoBehaviour
     {
         ThreatLevel = state;
         return ThreatLevel;
+    }
+
+    //Added by Skyler to jank a fix in Unity Events
+    public void CompleteThisQuest(string quest)
+    {
+        if (System.Enum.TryParse<Quest>(quest, out Quest yourEnum))
+        {
+            _questStatuses[yourEnum] = QuestStatus.Completed;
+        }
+
     }
 }
