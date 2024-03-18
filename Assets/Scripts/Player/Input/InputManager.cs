@@ -22,12 +22,24 @@ public class InputManager : MonoBehaviour
     void Update()
     {
         // polls each input action for state changes and fires a corresponding event if a state change has occurred
-
+        if (Input.GetKeyDown("e"))
+        {
+            OnInteract?.Invoke();
+        }
+        if (Input.GetKeyDown("space") || Input.GetMouseButtonDown(1))
+        {
+            OnAttack?.Invoke();
+        }
+        if (Input.GetKeyDown("escape"))
+        {
+            MasterUI.Instance.TogglePause();
+        }
+        /**
         if (_input.actions["Interact"].triggered)
         {
             OnInteract?.Invoke();
         }
-
+        
         if (_input.actions["Attack"].triggered)
         {
             OnAttack?.Invoke();
@@ -37,5 +49,6 @@ public class InputManager : MonoBehaviour
         {
             MasterUI.Instance.TogglePause();
         }
+        **/
     }
 }
