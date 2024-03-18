@@ -329,6 +329,14 @@ namespace StarterAssets
             }
         }
 
+        public void Pet()
+        {
+            if (Animator != null)
+            {
+                Animator.ResetTrigger("Pet");
+                Animator.SetTrigger("Pet");
+            }
+        }
         private void JumpAndGravity()
         {
             if (Grounded)

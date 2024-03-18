@@ -137,7 +137,7 @@ public class DialogueController : MonoBehaviour
 
         //disable cursor
         EnableCursor(false);
-
+        _dialogue._inDialogue = false;
         OnDialogueEnd?.Invoke();
         _dialogue.OnDialogueFinish?.Invoke();
         _dialogue.index = 0;

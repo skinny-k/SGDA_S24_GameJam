@@ -21,10 +21,15 @@ public class Dialogue : MonoBehaviour
     public UnityEvent OnDialogueFinish;
 
     public DialogueController _dialogueController;
-
+    [HideInInspector]
+    public bool _inDialogue = false;
     public void DisplayDialogue()
     {
-        _dialogueController.SetDialogue(this);
+        if (!_inDialogue)
+        {
+            _inDialogue = true;
+            _dialogueController.SetDialogue(this);
+        }      
     }
 
     public GameObject GetTarget()
