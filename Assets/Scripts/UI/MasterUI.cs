@@ -78,7 +78,7 @@ public class MasterUI : MonoBehaviour
 
     public void StartFadeToBlack(float time = 1.5f)
     {
-        _fadePanel.SetAtcive(true);
+        _fadePanel.gameObject.SetActive(true);
         _fadePanel.color = new Color(0, 0, 0, 0);
         _fadeTime = time;
         _fade = true;
@@ -86,7 +86,7 @@ public class MasterUI : MonoBehaviour
 
     public void StartFadeToWhite(float time = 1.5f)
     {
-        _fadePanel.SetAtcive(true);
+        _fadePanel.gameObject.SetActive(true);
         _fadePanel.color = new Color(1, 1, 1, 0);
         _fadeTime = time;
         _fade = true;
