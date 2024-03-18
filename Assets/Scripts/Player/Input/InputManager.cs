@@ -14,9 +14,10 @@ public class InputManager : MonoBehaviour
     public event Action OnInteract;
     public event Action OnAttack;
     
-    void OnValidate()
+    void Awake()
     {
         _input = GetComponent<PlayerInput>();
+        _input.actions.Enable();
     }
 
     void Update()

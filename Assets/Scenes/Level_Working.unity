@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571337, b: 0.3069219, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -17734,15 +17734,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6012278283615419061, guid: 26460f540e924446a8bba142a0f85ece, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.2380061
+      value: 0.23800609
       objectReference: {fileID: 0}
     - target: {fileID: 6012278283615419061, guid: 26460f540e924446a8bba142a0f85ece, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.23347634
+      value: 0.23347631
       objectReference: {fileID: 0}
     - target: {fileID: 6012278283615419061, guid: 26460f540e924446a8bba142a0f85ece, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.059057146
+      value: -0.059057135
       objectReference: {fileID: 0}
     - target: {fileID: 6012278283615419061, guid: 26460f540e924446a8bba142a0f85ece, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -28852,35 +28852,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 70976877720106379, guid: 37483ed20ff1a4fec98a189f0c859499, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.15998316
+      value: 5.3732133
       objectReference: {fileID: 0}
     - target: {fileID: 70976877720106379, guid: 37483ed20ff1a4fec98a189f0c859499, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.0149994
+      value: 2.481186
       objectReference: {fileID: 0}
     - target: {fileID: 70976877720106379, guid: 37483ed20ff1a4fec98a189f0c859499, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.999994
+      value: -2.7442544
       objectReference: {fileID: 0}
     - target: {fileID: 70976877720106379, guid: 37483ed20ff1a4fec98a189f0c859499, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.92611694
       objectReference: {fileID: 0}
     - target: {fileID: 70976877720106379, guid: 37483ed20ff1a4fec98a189f0c859499, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.0101398025
       objectReference: {fileID: 0}
     - target: {fileID: 70976877720106379, guid: 37483ed20ff1a4fec98a189f0c859499, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.37709928
       objectReference: {fileID: 0}
     - target: {fileID: 70976877720106379, guid: 37483ed20ff1a4fec98a189f0c859499, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.0008938137
       objectReference: {fileID: 0}
     - target: {fileID: 70976877720106380, guid: 37483ed20ff1a4fec98a189f0c859499, type: 3}
       propertyPath: field of view
-      value: 36
+      value: 42
       objectReference: {fileID: 0}
     - target: {fileID: 448893919119872268, guid: 37483ed20ff1a4fec98a189f0c859499, type: 3}
       propertyPath: Sword
@@ -65826,7 +65826,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: CM_SaveTheWorld
+            m_StringArgument: Good_GameOver
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1001 &1556012083
