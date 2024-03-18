@@ -96,7 +96,7 @@ public class Bench : InteractObject
         _sitting = false;
         //_collider.enabled = true;
         _controller.enabled = true;
-
+        _playerInRange.Actions.OnInteract -= Interact;
         if (npcCamera != null)
         {
             npcCamera.Priority = 0;
