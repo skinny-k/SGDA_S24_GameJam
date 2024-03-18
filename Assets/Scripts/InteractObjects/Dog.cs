@@ -8,9 +8,12 @@ public class Dog : InteractObject
     
     public override void Interact()
     {
-        base.Interact();
+        if (FindObjectOfType<PlayerInfo>().GetQuestStatus(Quest.PetDog) != QuestStatus.Completed)
+        {
+            base.Interact();
 
-        GameManager.Player.GetComponent<PlayerInfo>().UpdateQuestStatus(Quest.PetDog, QuestStatus.Completed);
-        MasterUI.Instance.UpdateTitle(", " + _rewardTitle);
+            GameManager.Player.GetComponent<PlayerInfo>().UpdateQuestStatus(Quest.PetDog, QuestStatus.Completed);
+            MasterUI.Instance.UpdateTitle(", " + _rewardTitle);
+        }
     }
 }

@@ -24,6 +24,11 @@ public class InteractObject : MonoBehaviour, IInteractable
         {
             Destroy(_tip.gameObject);
         }
+
+        if (_playerInRange != null)
+        {
+            _playerInRange.Actions.OnInteract -= Interact;
+        }
     }
     
     protected virtual void OnTriggerEnter(Collider other)
